@@ -1,113 +1,92 @@
+///
+/// Hyperspace by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
 /* Header */
 
-	$accent: accent2;
-
-	body {
-		
-		padding-top: _size(header-height);
-
-		&:before {
-			content: ' ';
-			background-image: url(../../images/bg.jpg);
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-		    display: block;
-		    position: fixed;
-		    left: 0;
-		    top: 0;
-		    width: 100%;
-		    height: 100%;
-		    z-index: -1;
-		    opacity: 0.05;
-		}
-	}
-
 	#header {
-		@include vendor('align-items', 'center');
 		@include vendor('display', 'flex');
-		@include vendor('justify-content', 'space-between');
-		background: _palette($accent, bg);
-		color: _palette($accent, fg);
+		background-color: _palette(accent1);
 		cursor: default;
-		height: _size(header-height);
-		left: 0;
-		line-height: _size(header-height);
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: _misc(z-index-base) + 1;
+		padding: 1.75em 2em;
 
-		> .logo {
-			color: _palette($accent, fg-bold);
-			font-size: 1rem;
+		> .title {
+			border: 0;
+			color: _palette(fg-bold);
+			display: block;
+			font-size: 1.25em;
 			font-weight: _font(weight-bold);
-			height: inherit;
-			line-height: inherit;
-			padding: 0 1.25rem;
-			text-decoration: none;
 		}
 
 		> nav {
-			> a {
-				color: inherit;
-				display: inline-block;
-				padding: 0 0.75rem;
-				text-decoration: none;
+			@include vendor('flex', '1');
+			text-align: right;
 
-				&:hover {
-					color: _palette($accent, fg-bold);
-				}
+			> ul {
+				margin: 0;
+				padding: 0;
 
-				&[href="#menu"] {
-					@include icon;
-					-webkit-tap-highlight-color: rgba(0,0,0,0);
+				> li {
+					display: inline-block;
+					margin-left: 1.75em;
+					padding: 0;
+					vertical-align: middle;
 
-					&:before {
-						content: '\f0c9';
-						margin: 0 0.5rem 0 0;
-					}
-				}
-
-				& + a[href="#menu"]:last-child {
-					border-left: solid 1px _palette($accent, border);
-					margin-left: 0.5rem;
-					padding-left: 1.25rem;
-				}
-
-				&:last-child {
-					padding-right: 1.25rem;
-				}
-
-				@include breakpoint('<=small') {
-					padding: 0 0.5rem;
-
-					& + a[href="#menu"]:last-child {
-						margin-left: 0.25rem;
-						padding-left: 1rem;
+					&:first-child {
+						margin-left: 0;
 					}
 
-					&:last-child {
-						padding-right: 1rem;
+					a {
+						border: 0;
+						color: _palette(fg-light);
+						display: inline-block;
+						font-size: 0.6em;
+						font-weight: _font(weight-bold);
+						letter-spacing: _font(kerning-alt);
+						text-transform: uppercase;
+
+						&:hover {
+							color: _palette(fg);
+						}
+
+						&.active {
+							color: _palette(fg-bold);
+						}
 					}
 				}
 			}
 		}
-	}
 
-	@include breakpoint('<=medium') {
-		body {
-			padding-top: 44px;
+		@include breakpoint('<=small') {
+			padding: 1em 2em;
 		}
 
-		#header {
-			height: 44px;
-			line-height: 44px;
-		}
-	}
+		@include breakpoint('<=xsmall') {
+			display: block;
+			padding: 0 2em;
+			text-align: left;
 
-	@include breakpoint('<=xsmall') {
-		#header {
-			min-width: 320px;
+			.title {
+				font-size: 1.25em;
+				padding: 1em 0;
+			}
+
+			> nav {
+				border-top: solid 1px _palette(border);
+				text-align: inherit;
+
+				> ul {
+					> li {
+						margin-left: 1.5em;
+
+						a {
+							height: 6em;
+							line-height: 6em;
+						}
+					}
+				}
+			}
 		}
 	}
